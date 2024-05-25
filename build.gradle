@@ -81,6 +81,22 @@ jar {
 	}
 }
 
+import com.modrinth.minotaur.dependencies.ModDependency
+modrinth {
+	token = System.getenv("MODRINTH_TOKEN")
+	projectId = 'ckXJT3cX' // The ID of your Modrinth project. Slugs will not work.
+	versionNumber = mod_version
+	versionType = "release" // can also be "beta" or "alpha"
+	uploadFile = remapJar
+	gameVersions = ['1.20.1'] // An array of game versions the version supports
+	loaders = ['fabric']
+	dependencies = [
+			new ModDependency('P7dR8mSH', 'required'), // Fabric API
+			new ModDependency('9s6osm5g', 'required') // Cloth Config
+	]
+	changelog = "${update_changelog}"
+}
+
 // configure the maven publication
 publishing {
 	publications {

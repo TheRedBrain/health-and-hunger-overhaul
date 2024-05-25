@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "com.github.theredbrain.healthandhungeroverhaul.mixin",
+	"package": "com.github.theredbrain.healthregenerationoverhaul.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"entity.LivingEntityMixin",

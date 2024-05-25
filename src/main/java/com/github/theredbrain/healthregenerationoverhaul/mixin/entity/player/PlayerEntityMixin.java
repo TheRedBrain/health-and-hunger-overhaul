@@ -1,6 +1,6 @@
-package com.github.theredbrain.healthandhungeroverhaul.mixin.entity.player;
+package com.github.theredbrain.healthregenerationoverhaul.mixin.entity.player;
 
-import com.github.theredbrain.healthandhungeroverhaul.entity.HealthUsingEntity;
+import com.github.theredbrain.healthregenerationoverhaul.entity.HealthUsingEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,8 +16,8 @@ public abstract class PlayerEntityMixin extends LivingEntity implements HealthUs
     }
 
     @Override
-    public float healthandhungeroverhaul$getRegeneratedHealth() {
-        return Math.max(this.healthandhungeroverhaul$getHealthRegeneration(), (this.getServer() != null && this.getServer().getGameRules().getBoolean(GameRules.NATURAL_REGENERATION) ? 1.0F : 0.0F));
+    public float healthregenerationoverhaul$getRegeneratedHealth() {
+        return Math.max(this.healthregenerationoverhaul$getHealthRegeneration(), (this.getServer() != null && this.getServer().getGameRules().getBoolean(GameRules.NATURAL_REGENERATION) ? 1.0F : 0.0F));
     }
 
 }

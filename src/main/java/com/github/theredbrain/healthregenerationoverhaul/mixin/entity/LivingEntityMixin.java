@@ -1,7 +1,7 @@
-package com.github.theredbrain.healthandhungeroverhaul.mixin.entity;
+package com.github.theredbrain.healthregenerationoverhaul.mixin.entity;
 
-import com.github.theredbrain.healthandhungeroverhaul.HealthAndHungerOverhaul;
-import com.github.theredbrain.healthandhungeroverhaul.entity.HealthUsingEntity;
+import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaul;
+import com.github.theredbrain.healthregenerationoverhaul.entity.HealthUsingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -41,29 +41,29 @@ public abstract class LivingEntityMixin extends Entity implements HealthUsingEnt
     }
 
     @Inject(method = "createLivingAttributes", at = @At("RETURN"))
-    private static void betteradventuremode$createLivingAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
+    private static void healthregenerationoverhaul$createLivingAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
         cir.getReturnValue()
-                .add(HealthAndHungerOverhaul.HEALTH_REGENERATION)
-                .add(HealthAndHungerOverhaul.HEALTH_TICK_THRESHOLD)
+                .add(HealthRegenerationOverhaul.HEALTH_REGENERATION)
+                .add(HealthRegenerationOverhaul.HEALTH_TICK_THRESHOLD)
         ;
     }
 
     @Inject(method = "heal", at = @At("RETURN"))
-    public void betteradventuremode$heal(float amount, CallbackInfo ci) {
+    public void healthregenerationoverhaul$heal(float amount, CallbackInfo ci) {
         if (amount < 0) {
             this.healthTickTimer = 0;
         }
     }
 
     @Inject(method = "tick", at = @At("TAIL"))
-    public void betteradventuremode$tick(CallbackInfo ci) {
+    public void healthregenerationoverhaul$tick(CallbackInfo ci) {
         if (!this.getWorld().isClient) {
 
             this.healthTickTimer++;
 
-            if (this.healthTickTimer >= this.healthandhungeroverhaul$getHealthTickThreshold()) {
+            if (this.healthTickTimer >= this.healthregenerationoverhaul$getHealthTickThreshold()) {
                 if (this.getHealth() < this.getMaxHealth()) {
-                    this.heal(this.healthandhungeroverhaul$getRegeneratedHealth());
+                    this.heal(this.healthregenerationoverhaul$getRegeneratedHealth());
                 } else if (this.getHealth() > this.getMaxHealth()) {
                     this.setHealth(this.getMaxHealth());
                 }
@@ -73,17 +73,17 @@ public abstract class LivingEntityMixin extends Entity implements HealthUsingEnt
     }
 
     @Override
-    public int healthandhungeroverhaul$getHealthTickThreshold() {
-        return (int) this.getAttributeValue(HealthAndHungerOverhaul.HEALTH_TICK_THRESHOLD);
+    public int healthregenerationoverhaul$getHealthTickThreshold() {
+        return (int) this.getAttributeValue(HealthRegenerationOverhaul.HEALTH_TICK_THRESHOLD);
     }
 
     @Override
-    public float healthandhungeroverhaul$getRegeneratedHealth() {
-        return this.healthandhungeroverhaul$getHealthRegeneration();
+    public float healthregenerationoverhaul$getRegeneratedHealth() {
+        return this.healthregenerationoverhaul$getHealthRegeneration();
     }
 
     @Override
-    public float healthandhungeroverhaul$getHealthRegeneration() {
-        return (float) this.getAttributeValue(HealthAndHungerOverhaul.HEALTH_REGENERATION);
+    public float healthregenerationoverhaul$getHealthRegeneration() {
+        return (float) this.getAttributeValue(HealthRegenerationOverhaul.HEALTH_REGENERATION);
     }
 }

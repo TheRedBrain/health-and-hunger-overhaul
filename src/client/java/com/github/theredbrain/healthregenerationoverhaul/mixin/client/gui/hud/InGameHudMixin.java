@@ -1,6 +1,6 @@
-package com.github.theredbrain.healthandhungeroverhaul.mixin.client.gui.hud;
+package com.github.theredbrain.healthregenerationoverhaul.mixin.client.gui.hud;
 
-import com.github.theredbrain.healthandhungeroverhaul.HealthAndHungerOverhaulClient;
+import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaulClient;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -36,8 +36,8 @@ public abstract class InGameHudMixin {
     private static final Identifier BARS_TEXTURE = new Identifier("textures/gui/bars.png");
 
     @Inject(method = "renderHealthBar", at = @At("HEAD"), cancellable = true)
-    private void foodoverhaul$renderHealthBar(DrawContext context, PlayerEntity player, int x, int y, int lines, int regeneratingHeartIndex, float maxHealth, int lastHealth, int health, int absorption, boolean blinking, CallbackInfo ci) {
-        var clientConfig = HealthAndHungerOverhaulClient.clientConfig;
+    private void healthregenerationoverhaul$renderHealthBar(DrawContext context, PlayerEntity player, int x, int y, int lines, int regeneratingHeartIndex, float maxHealth, int lastHealth, int health, int absorption, boolean blinking, CallbackInfo ci) {
+        var clientConfig = HealthRegenerationOverhaulClient.clientConfig;
         if (clientConfig.enable_alternative_health_bar) {
             health = MathHelper.ceil(player.getHealth());
             maxHealth = MathHelper.ceil(player.getMaxHealth());
@@ -99,7 +99,7 @@ public abstract class InGameHudMixin {
                     target = "Lnet/minecraft/client/gui/hud/InGameHud;getHeartCount(Lnet/minecraft/entity/LivingEntity;)I"
             )
     )
-    public int foodoverhaul$redirect_getHeartCount(InGameHud instance, LivingEntity entity) {
+    public int healthregenerationoverhaul$redirect_getHeartCount(InGameHud instance, LivingEntity entity) {
         return 1;
     }
 

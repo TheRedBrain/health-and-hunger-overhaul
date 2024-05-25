@@ -1,13 +1,13 @@
-package com.github.theredbrain.healthandhungeroverhaul;
+package com.github.theredbrain.healthregenerationoverhaul;
 
-import com.github.theredbrain.healthandhungeroverhaul.config.ClientConfig;
-import com.github.theredbrain.healthandhungeroverhaul.config.ClientConfigWrapper;
+import com.github.theredbrain.healthregenerationoverhaul.config.ClientConfig;
+import com.github.theredbrain.healthregenerationoverhaul.config.ClientConfigWrapper;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ClientModInitializer;
 
-public class HealthAndHungerOverhaulClient implements ClientModInitializer {
+public class HealthRegenerationOverhaulClient implements ClientModInitializer {
 	public static ClientConfig clientConfig;
 	@Override
 	public void onInitializeClient() {

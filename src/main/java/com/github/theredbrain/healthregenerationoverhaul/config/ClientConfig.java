@@ -1,4 +1,4 @@
-package com.github.theredbrain.healthandhungeroverhaul.config;
+package com.github.theredbrain.healthregenerationoverhaul.config;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;

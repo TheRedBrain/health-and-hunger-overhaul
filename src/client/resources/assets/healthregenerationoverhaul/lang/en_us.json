@@ -1,0 +1,15 @@
+{
+	"attribute.name.generic.health_regeneration": "Health Regen",
+	"attribute.name.generic.health_tick_threshold": "Health Tick Threshold",
+
+	"text.autoconfig.healthregenerationoverhaul.title": "Health Regeneration Overhaul",
+	"text.autoconfig.healthregenerationoverhaul.option.client.enable_alternative_health_bar": "Enable the alternative health bar",
+	"text.autoconfig.healthregenerationoverhaul.option.client.show_full_health_bar": "Shows the health bar even if it's full",
+	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_additional_length": "Additional length of the health bar",
+	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_x_offset": "Health bar x offset",
+	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_y_offset": "Health bar y offset",
+	"text.autoconfig.healthregenerationoverhaul.option.client.show_health_bar_number": "Show numeric health value",
+	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_number_color": "Color of the health bar number",
+	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_number_x_offset": "Health bar number x offset",
+	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_number_y_offset": "Health bar number y offset"
+}

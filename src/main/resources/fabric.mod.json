@@ -1,29 +1,32 @@
 {
 	"schemaVersion": 1,
-	"id": "healthandhungeroverhaul",
+	"id": "healthregenerationoverhaul",
 	"version": "${version}",
-	"name": "Health and Hunger Overhaul",
+	"name": "Health Regeneration Overhaul",
 	"description": "This API changes how health regeneration works and disables the food system.",
 	"authors": [
 		"TheRedBrain"
 	],
 	"contact": {
-		"sources": "https://https://github.com/TheRedBrain/health-and-hunger-overhaul"
+		"sources": "https://https://github.com/TheRedBrain/health-regeneration-overhaul"
 	},
 	"license": "MIT",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.github.theredbrain.healthandhungeroverhaul.HealthAndHungerOverhaul"
+			"com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaul"
 		],
 		"client": [
-			"com.github.theredbrain.healthandhungeroverhaul.HealthAndHungerOverhaulClient"
+			"com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaulClient"
+		],
+		"modmenu": [
+			"com.github.theredbrain.healthregenerationoverhaul.compatibility.ModMenuCompatibility"
 		]
 	},
 	"mixins": [
-		"healthandhungeroverhaul.mixins.json",
+		"healthregenerationoverhaul.mixins.json",
 		{
-			"config": "healthandhungeroverhaul.client.mixins.json",
+			"config": "healthregenerationoverhaul.client.mixins.json",
 			"environment": "client"
 		}
 	],

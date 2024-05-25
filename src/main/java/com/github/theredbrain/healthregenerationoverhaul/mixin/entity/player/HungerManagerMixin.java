@@ -1,4 +1,4 @@
-package com.github.theredbrain.healthandhungeroverhaul.mixin.entity.player;
+package com.github.theredbrain.healthregenerationoverhaul.mixin.entity.player;
 
 import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
