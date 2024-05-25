@@ -1,6 +1,6 @@
 package com.github.theredbrain.healthregenerationoverhaul.mixin.entity.player;
 
-import com.github.theredbrain.healthregenerationoverhaul.entity.HealthUsingEntity;
+import com.github.theredbrain.healthregenerationoverhaul.entity.HealthRegeneratingEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin extends LivingEntity implements HealthUsingEntity {
+public abstract class PlayerEntityMixin extends LivingEntity implements HealthRegeneratingEntity {
 
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);

@@ -1,7 +1,7 @@
 package com.github.theredbrain.healthregenerationoverhaul.mixin.entity;
 
 import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaul;
-import com.github.theredbrain.healthregenerationoverhaul.entity.HealthUsingEntity;
+import com.github.theredbrain.healthregenerationoverhaul.entity.HealthRegeneratingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity implements HealthUsingEntity {
+public abstract class LivingEntityMixin extends Entity implements HealthRegeneratingEntity {
 
     @Shadow
     public abstract float getMaxHealth();

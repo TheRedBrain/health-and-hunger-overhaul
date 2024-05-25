@@ -10,4 +10,4 @@ When the vanilla gamerule "naturalRegeneration" is true, players have a health r
 In the client config an alternative health bar can be enabled and customized.
 
 ## API
-Casting a "LivingEntity" to the "HealthUsingEntity" interface gives access to all relevant methods.
+Casting a "LivingEntity" to the "HealthRegeneratingEntity" interface gives access to all relevant methods.
