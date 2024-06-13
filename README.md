@@ -1,5 +1,6 @@
 # Health Regeneration Overhaul
-This API changes the way health is regenerated. Instead of depending on the hunger system, two new entity attributes are used. The hunger system including exhaustion and saturation is disabled.
+This API changes the way health is regenerated. Instead of depending on the hunger system, two new entity attributes are used.\
+The hunger system including exhaustion and saturation is disabled by default, but it can be re-enabled in the server config.
 
 ## Default implementation
 LivingEntities regenerate **_generic.health_regeneration_** every **_generic.health_tick_threshold_** ticks.

@@ -6,6 +6,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
 public class HealthRegenerationOverhaulClient implements ClientModInitializer {
 	public static ClientConfig clientConfig;
@@ -15,5 +16,8 @@ public class HealthRegenerationOverhaulClient implements ClientModInitializer {
 		AutoConfig.register(ClientConfigWrapper.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
 		clientConfig = ((ClientConfigWrapper)AutoConfig.getConfigHolder(ClientConfigWrapper.class).getConfig()).client;
 
+		ClientPlayNetworking.registerGlobalReceiver(HealthRegenerationOverhaul.ServerConfigSync.ID, (client, handler, buf, responseSender) -> {
+			HealthRegenerationOverhaul.serverConfig = HealthRegenerationOverhaul.ServerConfigSync.read(buf);
+		});
 	}
 }

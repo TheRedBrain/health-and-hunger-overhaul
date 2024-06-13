@@ -12,7 +12,7 @@ public class ClientConfig implements ConfigData {
             Replaces the vanilla health bar with a simpler and more scalable bar.
             All other options in this config only affect the new health bar
             """)
-    public boolean enable_alternative_health_bar = true;
+    public boolean enable_alternative_health_bar = false;
     public boolean show_full_health_bar = true;
     public int health_bar_additional_length = 172;
     public int health_bar_x_offset = -91;

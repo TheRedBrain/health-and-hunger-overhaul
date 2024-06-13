@@ -1,5 +1,6 @@
 package com.github.theredbrain.healthregenerationoverhaul.mixin.client.gui.hud;
 
+import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaul;
 import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaulClient;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -31,6 +32,8 @@ public abstract class InGameHudMixin {
     @Shadow @Final private MinecraftClient client;
 
     @Shadow public abstract TextRenderer getTextRenderer();
+
+    @Shadow protected abstract int getHeartCount(LivingEntity entity);
 
     @Unique
     private static final Identifier BARS_TEXTURE = new Identifier("textures/gui/bars.png");
@@ -100,9 +103,6 @@ public abstract class InGameHudMixin {
             )
     )
     public int healthregenerationoverhaul$redirect_getHeartCount(InGameHud instance, LivingEntity entity) {
-        return 1;
+        return HealthRegenerationOverhaul.serverConfig.disable_vanilla_food_system ? 1 : this.getHeartCount(entity);
     }
-
-
-
 }
