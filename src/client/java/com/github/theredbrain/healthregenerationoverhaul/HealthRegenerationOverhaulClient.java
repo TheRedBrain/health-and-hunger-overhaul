@@ -16,8 +16,9 @@ public class HealthRegenerationOverhaulClient implements ClientModInitializer {
 		AutoConfig.register(ClientConfigWrapper.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
 		clientConfig = ((ClientConfigWrapper)AutoConfig.getConfigHolder(ClientConfigWrapper.class).getConfig()).client;
 
-		ClientPlayNetworking.registerGlobalReceiver(HealthRegenerationOverhaul.ServerConfigSync.ID, (client, handler, buf, responseSender) -> {
-			HealthRegenerationOverhaul.serverConfig = HealthRegenerationOverhaul.ServerConfigSync.read(buf);
+		// Packets
+		ClientPlayNetworking.registerGlobalReceiver(HealthRegenerationOverhaul.ServerConfigSyncPacket.PACKET_ID, (payload, context) -> {
+			HealthRegenerationOverhaul.serverConfig = payload.serverConfig();
 		});
 	}
 }
