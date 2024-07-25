@@ -11,6 +11,7 @@
 		"sources": "https://https://github.com/TheRedBrain/health-regeneration-overhaul"
 	},
 	"license": "MIT",
+	"icon": "assets/healthregenerationoverhaul/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

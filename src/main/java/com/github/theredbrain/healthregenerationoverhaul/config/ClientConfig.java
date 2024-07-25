@@ -17,6 +17,9 @@ public class ClientConfig implements ConfigData {
     public int health_bar_additional_length = 172;
     public int health_bar_x_offset = -91;
     public int health_bar_y_offset = -39;
+    public boolean enable_smooth_animation = true;
+    public int health_bar_animation_interval = 1;
+    public boolean show_current_value_overlay = true;
     public boolean show_health_bar_number = true;
     public int health_bar_number_color = -6250336;
     public int health_bar_number_x_offset = 0;

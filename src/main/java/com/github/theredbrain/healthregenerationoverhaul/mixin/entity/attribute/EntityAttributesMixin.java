@@ -14,5 +14,6 @@ public class EntityAttributesMixin {
     static {
         HealthRegenerationOverhaul.HEALTH_REGENERATION = Registry.registerReference(Registries.ATTRIBUTE, HealthRegenerationOverhaul.identifier("generic.health_regeneration"), new ClampedEntityAttribute("attribute.name.generic.health_regeneration", 0.0, 0.0, 1024.0).setTracked(true));
         HealthRegenerationOverhaul.HEALTH_TICK_THRESHOLD = Registry.registerReference(Registries.ATTRIBUTE, HealthRegenerationOverhaul.identifier("generic.health_tick_threshold"), new ClampedEntityAttribute("attribute.name.generic.health_tick_threshold", 100.0, 0.0, 1024.0).setTracked(true));
+        HealthRegenerationOverhaul.HEALTH_REGENERATION_DELAY_THRESHOLD = Registry.registerReference(Registries.ATTRIBUTE, HealthRegenerationOverhaul.identifier("generic.health_regeneration_delay_threshold"), new ClampedEntityAttribute("attribute.name.generic.health_regeneration_delay_threshold", 100.0, 0.0, 1024.0).setTracked(true));
     }
 }

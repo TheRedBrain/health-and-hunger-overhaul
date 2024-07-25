@@ -2,6 +2,7 @@ package com.github.theredbrain.healthregenerationoverhaul.mixin.client.gui.hud;
 
 import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaul;
 import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaulClient;
+import com.github.theredbrain.healthregenerationoverhaul.entity.HealthRegeneratingEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -37,6 +38,15 @@ public abstract class InGameHudMixin {
     @Unique
     private static final Identifier BOSS_BAR_RED_BACKGROUND_TEXTURE = Identifier.ofVanilla("textures/gui/sprites/boss_bar/red_background.png");
 
+    @Unique
+    private int oldNormalizedHealthRatio = -1;
+
+    @Unique
+    private int oldMaxHealth = -1;
+
+    @Unique
+    private int healthBarAnimationCounter = 0;
+
     @Inject(method = "renderHealthBar", at = @At("HEAD"), cancellable = true)
     private void healthregenerationoverhaul$renderHealthBar(DrawContext context, PlayerEntity player, int x, int y, int lines, int regeneratingHeartIndex, float maxHealth, int lastHealth, int health, int absorption, boolean blinking, CallbackInfo ci) {
         var clientConfig = HealthRegenerationOverhaulClient.clientConfig;
@@ -51,6 +61,19 @@ public abstract class InGameHudMixin {
             int attributeBarNumberY;
             int normalizedHealthRatio = (int) (((double) health / Math.max(maxHealth, 1)) * (5 + clientConfig.health_bar_additional_length + 5));
 
+            if (this.oldMaxHealth != (int) maxHealth) {
+                this.oldMaxHealth = (int) maxHealth;
+                this.oldNormalizedHealthRatio = normalizedHealthRatio;
+            }
+
+            this.healthBarAnimationCounter = this.healthBarAnimationCounter + Math.max(1, MathHelper.ceil(((HealthRegeneratingEntity) player).healthregenerationoverhaul$getRegeneratedHealth()));
+
+            if (this.oldNormalizedHealthRatio != normalizedHealthRatio && this.healthBarAnimationCounter > Math.max(0, clientConfig.health_bar_animation_interval)) {
+                boolean reduceOldRatio = this.oldNormalizedHealthRatio > normalizedHealthRatio;
+                this.oldNormalizedHealthRatio = this.oldNormalizedHealthRatio + (reduceOldRatio ? -1 : 1);
+                this.healthBarAnimationCounter = 0;
+            }
+
             if (maxHealth > 0 && (health < maxHealth || clientConfig.show_full_health_bar)) {
 
                 // background
@@ -63,17 +86,27 @@ public abstract class InGameHudMixin {
                 context.drawTexture(BOSS_BAR_RED_BACKGROUND_TEXTURE, attributeBarX + 5 + health_bar_additional_length, attributeBarY, 177, 0, 5, 5, 182, 5);
 
                 // foreground
-                if (normalizedHealthRatio > 0) {
-                    context.drawTexture(BOSS_BAR_RED_PROGRESS_TEXTURE, attributeBarX, attributeBarY, 0, 0, Math.min(5, normalizedHealthRatio), 5, 182, 5);
-                    if (normalizedHealthRatio > 5) {
+                int displayRatio = clientConfig.enable_smooth_animation ? this.oldNormalizedHealthRatio : normalizedHealthRatio;
+                if (displayRatio > 0) {
+                    this.client.getProfiler().swap("health_bar_foreground");
+                    context.drawTexture(BOSS_BAR_RED_PROGRESS_TEXTURE, attributeBarX, attributeBarY, 0, 25, Math.min(5, displayRatio), 5, 182, 5);
+                    if (displayRatio > 5) {
                         if (health_bar_additional_length > 0) {
-                            for (int i = 5; i < Math.min(5 + health_bar_additional_length, normalizedHealthRatio); i++) {
-                                context.drawTexture(BOSS_BAR_RED_PROGRESS_TEXTURE, attributeBarX + i, attributeBarY, 5, 0, 1, 5, 182, 5);
+                            for (int i = 5; i < Math.min(5 + health_bar_additional_length, displayRatio); i++) {
+                                context.drawTexture(BOSS_BAR_RED_PROGRESS_TEXTURE, attributeBarX + i, attributeBarY, 5, 25, 1, 5, 182, 5);
                             }
                         }
                     }
-                    if (normalizedHealthRatio > (5 + health_bar_additional_length)) {
-                        context.drawTexture(BOSS_BAR_RED_PROGRESS_TEXTURE, attributeBarX + 5 + health_bar_additional_length, attributeBarY, 177, 0, Math.min(5, normalizedHealthRatio - 5 - health_bar_additional_length), 5, 182, 5);
+                    if (displayRatio > (5 + health_bar_additional_length)) {
+                        context.drawTexture(BOSS_BAR_RED_PROGRESS_TEXTURE, attributeBarX + 5 + health_bar_additional_length, attributeBarY, 177, 25, Math.min(5, displayRatio - 5 - health_bar_additional_length), 5, 182, 5);
+                    }
+                }
+
+                // overlay
+                if (clientConfig.enable_smooth_animation && clientConfig.show_current_value_overlay) {
+                    if (health > 0 && health < maxHealth) {
+                        this.client.getProfiler().swap("health_bar_overlay");
+                        context.drawTexture(BARS_TEXTURE, attributeBarX + normalizedHealthRatio - 2, attributeBarY + 1, 7, 116, 5, 3, 256, 256);
                     }
                 }
 
