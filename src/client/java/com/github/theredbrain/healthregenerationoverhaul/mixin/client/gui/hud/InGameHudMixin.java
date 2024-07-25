@@ -26,6 +26,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(InGameHud.class)
 public abstract class InGameHudMixin {
 
+    @Shadow private int scaledWidth;
+
+    @Shadow private int scaledHeight;
+
     @Shadow @Final private MinecraftClient client;
 
     @Shadow public abstract TextRenderer getTextRenderer();
@@ -33,10 +37,7 @@ public abstract class InGameHudMixin {
     @Shadow protected abstract int getHeartCount(LivingEntity entity);
 
     @Unique
-    private static final Identifier BOSS_BAR_RED_PROGRESS_TEXTURE = Identifier.ofVanilla("textures/gui/sprites/boss_bar/red_progress.png");
-
-    @Unique
-    private static final Identifier BOSS_BAR_RED_BACKGROUND_TEXTURE = Identifier.ofVanilla("textures/gui/sprites/boss_bar/red_background.png");
+    private static final Identifier BARS_TEXTURE = new Identifier("textures/gui/bars.png");
 
     @Unique
     private int oldNormalizedHealthRatio = -1;
@@ -54,8 +55,8 @@ public abstract class InGameHudMixin {
             health = MathHelper.ceil(player.getHealth());
             maxHealth = MathHelper.ceil(player.getMaxHealth());
 
-            int attributeBarX = context.getScaledWindowWidth() / 2 + clientConfig.health_bar_x_offset;
-            int attributeBarY = context.getScaledWindowHeight() + clientConfig.health_bar_y_offset;
+            int attributeBarX = this.scaledWidth / 2 + clientConfig.health_bar_x_offset;
+            int attributeBarY = this.scaledHeight + clientConfig.health_bar_y_offset;
             int health_bar_additional_length = clientConfig.health_bar_additional_length;
             int attributeBarNumberX;
             int attributeBarNumberY;
@@ -77,28 +78,28 @@ public abstract class InGameHudMixin {
             if (maxHealth > 0 && (health < maxHealth || clientConfig.show_full_health_bar)) {
 
                 // background
-                context.drawTexture(BOSS_BAR_RED_BACKGROUND_TEXTURE, attributeBarX, attributeBarY, 0, 0, 5, 5, 182, 5);
+                context.drawTexture(BARS_TEXTURE, attributeBarX, attributeBarY, 0, 20, 5, 5, 256, 256);
                 if (health_bar_additional_length > 0) {
                     for (int i = 0; i < health_bar_additional_length; i++) {
-                        context.drawTexture(BOSS_BAR_RED_BACKGROUND_TEXTURE, attributeBarX + 5 + i, attributeBarY, 5, 0, 1, 5, 182, 5);
+                        context.drawTexture(BARS_TEXTURE, attributeBarX + 5 + i, attributeBarY, 5, 20, 1, 5, 256, 256);
                     }
                 }
-                context.drawTexture(BOSS_BAR_RED_BACKGROUND_TEXTURE, attributeBarX + 5 + health_bar_additional_length, attributeBarY, 177, 0, 5, 5, 182, 5);
+                context.drawTexture(BARS_TEXTURE, attributeBarX + 5 + health_bar_additional_length, attributeBarY, 177, 20, 5, 5, 256, 256);
 
                 // foreground
                 int displayRatio = clientConfig.enable_smooth_animation ? this.oldNormalizedHealthRatio : normalizedHealthRatio;
                 if (displayRatio > 0) {
                     this.client.getProfiler().swap("health_bar_foreground");
-                    context.drawTexture(BOSS_BAR_RED_PROGRESS_TEXTURE, attributeBarX, attributeBarY, 0, 25, Math.min(5, displayRatio), 5, 182, 5);
+                    context.drawTexture(BARS_TEXTURE, attributeBarX, attributeBarY, 0, 25, Math.min(5, displayRatio), 5, 256, 256);
                     if (displayRatio > 5) {
                         if (health_bar_additional_length > 0) {
                             for (int i = 5; i < Math.min(5 + health_bar_additional_length, displayRatio); i++) {
-                                context.drawTexture(BOSS_BAR_RED_PROGRESS_TEXTURE, attributeBarX + i, attributeBarY, 5, 25, 1, 5, 182, 5);
+                                context.drawTexture(BARS_TEXTURE, attributeBarX + i, attributeBarY, 5, 25, 1, 5, 256, 256);
                             }
                         }
                     }
                     if (displayRatio > (5 + health_bar_additional_length)) {
-                        context.drawTexture(BOSS_BAR_RED_PROGRESS_TEXTURE, attributeBarX + 5 + health_bar_additional_length, attributeBarY, 177, 25, Math.min(5, displayRatio - 5 - health_bar_additional_length), 5, 182, 5);
+                        context.drawTexture(BARS_TEXTURE, attributeBarX + 5 + health_bar_additional_length, attributeBarY, 177, 25, Math.min(5, displayRatio - 5 - health_bar_additional_length), 5, 256, 256);
                     }
                 }
 
@@ -113,8 +114,8 @@ public abstract class InGameHudMixin {
                 if (clientConfig.show_health_bar_number) {
                     this.client.getProfiler().swap("health_bar_number");
                     String string = String.valueOf(health);
-                    attributeBarNumberX = (context.getScaledWindowWidth() - this.getTextRenderer().getWidth(string)) / 2 + clientConfig.health_bar_number_x_offset;
-                    attributeBarNumberY = context.getScaledWindowHeight() + clientConfig.health_bar_number_y_offset;
+                    attributeBarNumberX = (this.scaledWidth - this.getTextRenderer().getWidth(string)) / 2 + clientConfig.health_bar_number_x_offset;
+                    attributeBarNumberY = this.scaledHeight + clientConfig.health_bar_number_y_offset;
                     context.drawText(this.getTextRenderer(), string, attributeBarNumberX + 1, attributeBarNumberY, 0, false);
                     context.drawText(this.getTextRenderer(), string, attributeBarNumberX - 1, attributeBarNumberY, 0, false);
                     context.drawText(this.getTextRenderer(), string, attributeBarNumberX, attributeBarNumberY + 1, 0, false);

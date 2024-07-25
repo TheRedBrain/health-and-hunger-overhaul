@@ -7,7 +7,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,9 +28,10 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
     @Shadow
     public abstract float getHealth();
 
-    @Shadow public abstract void heal(float amount);
+    @Shadow
+    public abstract double getAttributeValue(EntityAttribute attribute);
 
-    @Shadow public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
+    @Shadow public abstract void heal(float amount);
 
     @Unique
     private int healthTickTimer = 0;

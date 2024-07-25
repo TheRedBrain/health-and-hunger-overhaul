@@ -4,16 +4,19 @@ import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverh
 import net.minecraft.entity.attribute.ClampedEntityAttribute;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(EntityAttributes.class)
 public class EntityAttributesMixin {
+    @Shadow
+    private static EntityAttribute register(String id, EntityAttribute attribute) {
+        throw new AssertionError();
+    }
+
     static {
-        HealthRegenerationOverhaul.HEALTH_REGENERATION = Registry.registerReference(Registries.ATTRIBUTE, HealthRegenerationOverhaul.identifier("generic.health_regeneration"), new ClampedEntityAttribute("attribute.name.generic.health_regeneration", 0.0, 0.0, 1024.0).setTracked(true));
-        HealthRegenerationOverhaul.HEALTH_TICK_THRESHOLD = Registry.registerReference(Registries.ATTRIBUTE, HealthRegenerationOverhaul.identifier("generic.health_tick_threshold"), new ClampedEntityAttribute("attribute.name.generic.health_tick_threshold", 100.0, 0.0, 1024.0).setTracked(true));
-        HealthRegenerationOverhaul.HEALTH_REGENERATION_DELAY_THRESHOLD = Registry.registerReference(Registries.ATTRIBUTE, HealthRegenerationOverhaul.identifier("generic.health_regeneration_delay_threshold"), new ClampedEntityAttribute("attribute.name.generic.health_regeneration_delay_threshold", 100.0, 0.0, 1024.0).setTracked(true));
+        HealthRegenerationOverhaul.HEALTH_REGENERATION = register(HealthRegenerationOverhaul.MOD_ID + ":generic.health_regeneration", new ClampedEntityAttribute("attribute.name.generic.health_regeneration", 0.0, 0.0, 1024.0).setTracked(true));
+        HealthRegenerationOverhaul.HEALTH_TICK_THRESHOLD = register(HealthRegenerationOverhaul.MOD_ID + ":generic.health_tick_threshold", new ClampedEntityAttribute("attribute.name.generic.health_tick_threshold", 100.0, 0.0, 1024.0).setTracked(true));
+        HealthRegenerationOverhaul.HEALTH_REGENERATION_DELAY_THRESHOLD = register(HealthRegenerationOverhaul.MOD_ID + ":generic.health_regeneration_delay_threshold", new ClampedEntityAttribute("attribute.name.generic.health_regeneration_delay_threshold", 100.0F, 0.0F, 1024.0F).setTracked(true));
     }
 }
