@@ -24,6 +24,7 @@ public class HealthRegenerationOverhaul implements ModInitializer {
 
 	public static EntityAttribute HEALTH_REGENERATION;
 	public static EntityAttribute HEALTH_TICK_THRESHOLD;
+	public static EntityAttribute HEALTH_REGENERATION_DELAY_THRESHOLD;
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Regenerating health was overhauled!");

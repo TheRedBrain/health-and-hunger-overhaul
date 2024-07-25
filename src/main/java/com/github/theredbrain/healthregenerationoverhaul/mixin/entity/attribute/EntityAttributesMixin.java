@@ -17,5 +17,6 @@ public class EntityAttributesMixin {
     static {
         HealthRegenerationOverhaul.HEALTH_REGENERATION = register(HealthRegenerationOverhaul.MOD_ID + ":generic.health_regeneration", new ClampedEntityAttribute("attribute.name.generic.health_regeneration", 0.0, 0.0, 1024.0).setTracked(true));
         HealthRegenerationOverhaul.HEALTH_TICK_THRESHOLD = register(HealthRegenerationOverhaul.MOD_ID + ":generic.health_tick_threshold", new ClampedEntityAttribute("attribute.name.generic.health_tick_threshold", 100.0, 0.0, 1024.0).setTracked(true));
+        HealthRegenerationOverhaul.HEALTH_REGENERATION_DELAY_THRESHOLD = register(HealthRegenerationOverhaul.MOD_ID + ":generic.health_regeneration_delay_threshold", new ClampedEntityAttribute("attribute.name.generic.health_regeneration_delay_threshold", 20.0F, 0.0F, 1024.0F).setTracked(true));
     }
 }

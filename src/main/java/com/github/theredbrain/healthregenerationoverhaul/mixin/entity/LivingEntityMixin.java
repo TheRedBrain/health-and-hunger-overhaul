@@ -36,6 +36,9 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
     @Unique
     private int healthTickTimer = 0;
 
+    @Unique
+    private int healthRegenerationDelayTimer = 0;
+
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -45,12 +48,14 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
         cir.getReturnValue()
                 .add(HealthRegenerationOverhaul.HEALTH_REGENERATION)
                 .add(HealthRegenerationOverhaul.HEALTH_TICK_THRESHOLD)
+                .add(HealthRegenerationOverhaul.HEALTH_REGENERATION_DELAY_THRESHOLD)
         ;
     }
 
     @Inject(method = "heal", at = @At("RETURN"))
     public void healthregenerationoverhaul$heal(float amount, CallbackInfo ci) {
         if (amount < 0) {
+            this.healthRegenerationDelayTimer = 0;
             this.healthTickTimer = 0;
         }
     }
@@ -61,7 +66,14 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
 
             this.healthTickTimer++;
 
-            if (this.healthTickTimer >= this.healthregenerationoverhaul$getHealthTickThreshold()) {
+            if (this.healthRegenerationDelayTimer <= this.healthregenerationoverhaul$getHealthRegenerationDelayThreshold()) {
+                this.healthRegenerationDelayTimer++;
+            }
+
+            if (
+                    this.healthTickTimer >= this.healthregenerationoverhaul$getHealthTickThreshold()
+                    && this.healthRegenerationDelayTimer > this.healthregenerationoverhaul$getHealthRegenerationDelayThreshold()
+            ) {
                 if (this.getHealth() < this.getMaxHealth()) {
                     this.heal(this.healthregenerationoverhaul$getRegeneratedHealth());
                 } else if (this.getHealth() > this.getMaxHealth()) {
@@ -70,6 +82,11 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
                 this.healthTickTimer = 0;
             }
         }
+    }
+
+    @Override
+    public int healthregenerationoverhaul$getHealthRegenerationDelayThreshold() {
+        return (int) this.getAttributeValue(HealthRegenerationOverhaul.HEALTH_REGENERATION_DELAY_THRESHOLD);
     }
 
     @Override

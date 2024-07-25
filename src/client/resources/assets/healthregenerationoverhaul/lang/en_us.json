@@ -1,6 +1,7 @@
 {
 	"attribute.name.generic.health_regeneration": "Health Regen",
 	"attribute.name.generic.health_tick_threshold": "Health Tick Threshold",
+	"attribute.name.generic.health_regeneration_delay_threshold": "Health Regeneration Delay Threshold",
 
 	"text.autoconfig.healthregenerationoverhaul.title": "Health Regeneration Overhaul",
 	"text.autoconfig.healthregenerationoverhaul.option.client.enable_alternative_health_bar": "Enable the alternative health bar",
