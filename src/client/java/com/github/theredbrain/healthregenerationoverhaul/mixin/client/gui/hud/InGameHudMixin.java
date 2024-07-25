@@ -67,7 +67,7 @@ public abstract class InGameHudMixin {
                 this.oldNormalizedHealthRatio = normalizedHealthRatio;
             }
 
-            this.healthBarAnimationCounter = this.healthBarAnimationCounter + MathHelper.ceil(((HealthRegeneratingEntity) player).healthregenerationoverhaul$getRegeneratedHealth());
+            this.healthBarAnimationCounter = this.healthBarAnimationCounter + Math.max(1, MathHelper.ceil(((HealthRegeneratingEntity) player).healthregenerationoverhaul$getRegeneratedHealth()));
 
             if (this.oldNormalizedHealthRatio != normalizedHealthRatio && this.healthBarAnimationCounter > Math.max(0, clientConfig.health_bar_animation_interval)) {
                 boolean reduceOldRatio = this.oldNormalizedHealthRatio > normalizedHealthRatio;
@@ -89,6 +89,7 @@ public abstract class InGameHudMixin {
                 // foreground
                 int displayRatio = clientConfig.enable_smooth_animation ? this.oldNormalizedHealthRatio : normalizedHealthRatio;
                 if (displayRatio > 0) {
+                    this.client.getProfiler().swap("health_bar_foreground");
                     context.drawTexture(BARS_TEXTURE, attributeBarX, attributeBarY, 0, 25, Math.min(5, displayRatio), 5, 256, 256);
                     if (displayRatio > 5) {
                         if (health_bar_additional_length > 0) {
@@ -104,10 +105,9 @@ public abstract class InGameHudMixin {
 
                 // overlay
                 if (clientConfig.enable_smooth_animation && clientConfig.show_current_value_overlay) {
-                    if (normalizedHealthRatio > 0) {
-                        if (normalizedHealthRatio > 2 && normalizedHealthRatio < (5 +  + 3)) {
-                            context.drawTexture(BARS_TEXTURE, attributeBarX + normalizedHealthRatio - 2, attributeBarY + 1, 7, 116, 5, 3, 256, 256);
-                        }
+                    if (health > 0 && health < maxHealth) {
+                        this.client.getProfiler().swap("health_bar_overlay");
+                        context.drawTexture(BARS_TEXTURE, attributeBarX + normalizedHealthRatio - 2, attributeBarY + 1, 7, 116, 5, 3, 256, 256);
                     }
                 }
 
