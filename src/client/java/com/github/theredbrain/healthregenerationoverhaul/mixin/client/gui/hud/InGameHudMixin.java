@@ -39,6 +39,9 @@ public abstract class InGameHudMixin {
     private static final Identifier BOSS_BAR_RED_BACKGROUND_TEXTURE = Identifier.ofVanilla("textures/gui/sprites/boss_bar/red_background.png");
 
     @Unique
+    private static final Identifier NOTCHED_20_PROGRESS_TEXTURE = Identifier.ofVanilla("textures/gui/sprites/boss_bar/notched_20_progress.png");
+
+    @Unique
     private int oldNormalizedHealthRatio = -1;
 
     @Unique
@@ -106,7 +109,7 @@ public abstract class InGameHudMixin {
                 if (clientConfig.enable_smooth_animation && clientConfig.show_current_value_overlay) {
                     if (health > 0 && health < maxHealth) {
                         this.client.getProfiler().swap("health_bar_overlay");
-                        context.drawTexture(BARS_TEXTURE, attributeBarX + normalizedHealthRatio - 2, attributeBarY + 1, 7, 116, 5, 3, 256, 256);
+                        context.drawTexture(NOTCHED_20_PROGRESS_TEXTURE, attributeBarX + normalizedHealthRatio - 2, attributeBarY + 1, 7, 1, 5, 3, 182, 5);
                     }
                 }
 

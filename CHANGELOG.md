@@ -1,7 +1,11 @@
-# 1.2.0
+# 2.1.0
 
 - added optional smooth health bar animations
 - added a health regeneration delay after health is reduced, controlled by an entity attribute
+
+# 2.0.0
+
+Update to 1.21
 
 # 1.1.0
 
