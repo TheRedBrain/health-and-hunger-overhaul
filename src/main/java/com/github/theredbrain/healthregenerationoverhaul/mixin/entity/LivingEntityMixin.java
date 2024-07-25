@@ -2,6 +2,7 @@ package com.github.theredbrain.healthregenerationoverhaul.mixin.entity;
 
 import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaul;
 import com.github.theredbrain.healthregenerationoverhaul.entity.HealthRegeneratingEntity;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -14,6 +15,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -58,6 +60,11 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
             this.healthRegenerationDelayTimer = 0;
             this.healthTickTimer = 0;
         }
+    }
+
+    @Redirect(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setHealth(F)V"))
+    protected void healthregenerationoverhaul$redirect_setHealth(LivingEntity instance, float health, @Local(argsOnly = true) float amount) {
+        instance.heal(-amount);
     }
 
     @Inject(method = "tick", at = @At("TAIL"))
