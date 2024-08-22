@@ -1,3 +1,7 @@
+# 1.2.1
+
+- fixed an issue where entities would rarely be immortal
+
 # 1.2.0
 
 - added optional smooth health bar animations
