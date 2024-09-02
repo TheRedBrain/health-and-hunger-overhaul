@@ -1,5 +1,9 @@
 # 2.1.0
 
+- fixed an issue where entities would rarely be immortal
+
+# 2.1.0
+
 - added optional smooth health bar animations
 - added a health regeneration delay after health is reduced, controlled by an entity attribute
 

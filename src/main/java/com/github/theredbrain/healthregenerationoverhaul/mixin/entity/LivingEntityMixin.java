@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -57,14 +58,15 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
     @Inject(method = "heal", at = @At("RETURN"))
     public void healthregenerationoverhaul$heal(float amount, CallbackInfo ci) {
         if (amount < 0) {
-            this.healthRegenerationDelayTimer = 0;
-            this.healthTickTimer = 0;
+            this.healthregenerationoverhaul$resetTickCounters();
         }
     }
 
-    @Redirect(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setHealth(F)V"))
-    protected void healthregenerationoverhaul$redirect_setHealth(LivingEntity instance, float health, @Local(argsOnly = true) float amount) {
-        instance.heal(-amount);
+    @Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setHealth(F)V", shift = At.Shift.AFTER))
+    protected void healthregenerationoverhaul$applyDamage(DamageSource source, float amount, CallbackInfo ci) {
+        if (amount < 0) {
+            this.healthregenerationoverhaul$resetTickCounters();
+        }
     }
 
     @Inject(method = "tick", at = @At("TAIL"))
@@ -109,5 +111,11 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
     @Override
     public float healthregenerationoverhaul$getHealthRegeneration() {
         return (float) this.getAttributeValue(HealthRegenerationOverhaul.HEALTH_REGENERATION);
+    }
+
+    @Override
+    public void healthregenerationoverhaul$resetTickCounters() {
+        this.healthRegenerationDelayTimer = 0;
+        this.healthTickTimer = 0;
     }
 }
