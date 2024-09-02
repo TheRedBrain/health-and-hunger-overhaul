@@ -4,16 +4,72 @@
 	"attribute.name.generic.health_regeneration_delay_threshold": "Health Regeneration Delay Threshold",
 
 	"text.autoconfig.healthregenerationoverhaul.title": "Health Regeneration Overhaul",
+	
+	"text.autoconfig.healthregenerationoverhaul.option.client.enable_alternative_health_bar.@PrefixText": "Replaces the vanilla health bar with a simpler and more scalable bar. All other options in this config only affect the new health bar.",
 	"text.autoconfig.healthregenerationoverhaul.option.client.enable_alternative_health_bar": "Enable the alternative health bar",
 	"text.autoconfig.healthregenerationoverhaul.option.client.show_full_health_bar": "Shows the health bar even if it's full",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_additional_length": "Additional length of the health bar",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_x_offset": "Health bar x offset",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_y_offset": "Health bar y offset",
-	"text.autoconfig.healthregenerationoverhaul.option.client.enable_smooth_animation": "Enable a smooth animation on value changes",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_animation_interval": "Animation update interval in ticks",
-	"text.autoconfig.healthregenerationoverhaul.option.client.show_current_value_overlay": "Displays the current value on the bar",
-	"text.autoconfig.healthregenerationoverhaul.option.client.show_health_bar_number": "Show numeric health value",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_number_color": "Color of the health bar number",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_number_x_offset": "Health bar number x offset",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_number_y_offset": "Health bar number y offset"
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.x_offset": "X offset from screen center",
+	"text.autoconfig.healthregenerationoverhaul.option.client.y_offset": "Y offset from screen center",
+	"text.autoconfig.healthregenerationoverhaul.option.client.fill_direction": "Fill direction",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.background_middle_segment_amount.@PrefixText": "\nBackground Texture",
+	"text.autoconfig.healthregenerationoverhaul.option.client.background_middle_segment_amount": "Middle segment amount",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_background_left_end_width.@PrefixText": "\nHorizontal texture\nThe texture width should be the sum of the 3 following values",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_background_left_end_width": "Left end width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_background_middle_segment_width": "Middle segment width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_background_right_end_width": "Right end width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_background_height": "Height",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_background_width.@PrefixText": "\nVertical texture",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_background_width": "Width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_background_top_end_height.@PrefixText": "\nThe texture height should be the sum of the 3 following values",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_background_top_end_height": "Top end height",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_background_middle_segment_height": "Middle segment height",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_background_bottom_end_height": "Bottom end height",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.progress_offset_x.@PrefixText": "\nProgress Texture",
+	"text.autoconfig.healthregenerationoverhaul.option.client.progress_offset_x": "X offset from background",
+	"text.autoconfig.healthregenerationoverhaul.option.client.progress_offset_y": "Y offset from background",
+	"text.autoconfig.healthregenerationoverhaul.option.client.progress_middle_segment_amount": "Middle segment amount",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_progress_left_end_width.@PrefixText": "\nHorizontal texture\nThe texture width should be the sum of the 3 following values",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_progress_left_end_width": "Left end width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_progress_middle_segment_width": "Middle segment width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_progress_right_end_width": "Right end width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_progress_height": "Height",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_progress_width.@PrefixText": "\nVertical texture",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_progress_width": "Width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_progress_top_end_height.@PrefixText": "\nThe texture height should be the sum of the 3 following values",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_progress_top_end_height": "Top end height",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_progress_middle_segment_height": "Middle segment height",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_progress_bottom_end_height": "Bottom end height",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.show_current_value_overlay.@PrefixText": "\nCurrent value overlay",
+	"text.autoconfig.healthregenerationoverhaul.option.client.show_current_value_overlay": "Show overlay",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.overlay_offset_x": "X offset from progress",
+	"text.autoconfig.healthregenerationoverhaul.option.client.overlay_offset_y": "Y offset from progress",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_overlay_width.@PrefixText": "\nHorizontal Overlay Texture",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_overlay_width": "Width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.horizontal_overlay_height": "Height",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_overlay_width.@PrefixText": "\nVertical Overlay Texture",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_overlay_width": "Width",
+	"text.autoconfig.healthregenerationoverhaul.option.client.vertical_overlay_height": "Height",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.enable_smooth_animation.@PrefixText": "\nAnimation",
+	"text.autoconfig.healthregenerationoverhaul.option.client.enable_smooth_animation": "Enable smooth animation",
+	"text.autoconfig.healthregenerationoverhaul.option.client.animation_interval": "Animation interval",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.show_number.@PrefixText": "\nNumber",
+	"text.autoconfig.healthregenerationoverhaul.option.client.show_number": "Show number",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.number_x_offset": "X offset from screen center",
+	"text.autoconfig.healthregenerationoverhaul.option.client.number_y_offset": "Y offset from screen center",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.number_color": "Number color"
 }
