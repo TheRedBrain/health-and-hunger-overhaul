@@ -1,5 +1,7 @@
-# 2.1.0
+# 2.2.0
 
+- update to 1.21.1
+- improved health bar customization
 - fixed an issue where entities would rarely be immortal
 
 # 2.1.0
