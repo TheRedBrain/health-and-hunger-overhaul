@@ -15,7 +15,7 @@ When health is reduced, regeneration is stopped for **_generic.health_regenerati
 ## Customization
 When the vanilla gamerule "naturalRegeneration" is true, players have a health regeneration of at least 1.
 
-In the client config an alternative health bar can be enabled and customized.
+In the client config an alternative health bar can be enabled and customized. The details are explained in [this wiki article](https://github.com/TheRedBrain/overhauled-damage/wiki/Resource-Bar-Customization).
 
 ## API
 Casting a "LivingEntity" to the "HealthRegeneratingEntity" interface gives access to all relevant methods.

@@ -1,3 +1,7 @@
+# 2.3.0
+
+- further improvements to health bar customization
+
 # 2.2.0
 
 - update to 1.21.1

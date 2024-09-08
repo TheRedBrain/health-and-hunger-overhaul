@@ -9,9 +9,10 @@
 	"text.autoconfig.healthregenerationoverhaul.option.client.enable_alternative_health_bar": "Enable the alternative health bar",
 	"text.autoconfig.healthregenerationoverhaul.option.client.show_full_health_bar": "Shows the health bar even if it's full",
 
-	"text.autoconfig.healthregenerationoverhaul.option.client.x_offset": "X offset from screen center",
-	"text.autoconfig.healthregenerationoverhaul.option.client.y_offset": "Y offset from screen center",
+	"text.autoconfig.healthregenerationoverhaul.option.client.offset_x": "X offset from origin",
+	"text.autoconfig.healthregenerationoverhaul.option.client.offset_y": "Y offset from origin",
 	"text.autoconfig.healthregenerationoverhaul.option.client.fill_direction": "Fill direction",
+	"text.autoconfig.healthregenerationoverhaul.option.client.origin": "Origin",
 
 	"text.autoconfig.healthregenerationoverhaul.option.client.background_middle_segment_amount.@PrefixText": "\nBackground Texture",
 	"text.autoconfig.healthregenerationoverhaul.option.client.background_middle_segment_amount": "Middle segment amount",
@@ -65,11 +66,16 @@
 	"text.autoconfig.healthregenerationoverhaul.option.client.enable_smooth_animation": "Enable smooth animation",
 	"text.autoconfig.healthregenerationoverhaul.option.client.animation_interval": "Animation interval",
 
+	"text.autoconfig.healthregenerationoverhaul.option.client.max_value_change_is_animated": "Animate changes to the max value",
+
 	"text.autoconfig.healthregenerationoverhaul.option.client.show_number.@PrefixText": "\nNumber",
 	"text.autoconfig.healthregenerationoverhaul.option.client.show_number": "Show number",
 
-	"text.autoconfig.healthregenerationoverhaul.option.client.number_x_offset": "X offset from screen center",
-	"text.autoconfig.healthregenerationoverhaul.option.client.number_y_offset": "Y offset from screen center",
+	"text.autoconfig.healthregenerationoverhaul.option.client.show_max_value.@PrefixText": "Show the max value in addition to the current value",
+	"text.autoconfig.healthregenerationoverhaul.option.client.show_max_value": "Show maximum value",
+
+	"text.autoconfig.healthregenerationoverhaul.option.client.number_offset_x": "X offset from origin",
+	"text.autoconfig.healthregenerationoverhaul.option.client.number_offset_y": "Y offset from origin",
 
 	"text.autoconfig.healthregenerationoverhaul.option.client.number_color": "Number color"
 }
