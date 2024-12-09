@@ -15,20 +15,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity implements HealthRegeneratingEntity {
 
-    protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
-        super(entityType, world);
-    }
+	protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
+		super(entityType, world);
+	}
 
-    @Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;setHealth(F)V", shift = At.Shift.AFTER))
-    protected void healthregenerationoverhaul$applyDamage(DamageSource source, float amount, CallbackInfo ci) {
-        if (amount < 0) {
-            this.healthregenerationoverhaul$resetTickCounters();
-        }
-    }
+	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;setHealth(F)V", shift = At.Shift.AFTER))
+	protected void healthregenerationoverhaul$applyDamage(DamageSource source, float amount, CallbackInfo ci) {
+		if (amount < 0) {
+			this.healthregenerationoverhaul$resetTickCounters();
+		}
+	}
 
-    @Override
-    public float healthregenerationoverhaul$getRegeneratedHealth() {
-        return this.healthregenerationoverhaul$getHealthRegeneration() + (this.getServer() != null && this.getServer().getGameRules().getBoolean(GameRules.NATURAL_REGENERATION) ? 1.0F : 0.0F);
-    }
-
+	@Override
+	public float healthregenerationoverhaul$getRegeneratedHealth() {
+		return this.healthregenerationoverhaul$getHealthRegeneration() + (this.getServer() != null && this.getServer().getGameRules().getBoolean(GameRules.NATURAL_REGENERATION) ? 1.0F : 0.0F);
+	}
 }
