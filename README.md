@@ -5,7 +5,7 @@ used.
 
 The vanilla hunger system including exhaustion and saturation is disabled by default.
 
-Additionally, a third entity attribute called **_generic.reserved_health_** is added.
+Additionally, an entity attribute called **_generic.reserved_health_** is added.
 
 ## Default implementation
 
