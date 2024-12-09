@@ -19,9 +19,6 @@
 		],
 		"client": [
 			"com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaulClient"
-		],
-		"modmenu": [
-			"com.github.theredbrain.healthregenerationoverhaul.compatibility.ModMenuCompatibility"
 		]
 	},
 	"mixins": [
@@ -31,11 +28,17 @@
 			"environment": "client"
 		}
 	],
+	"custom": {
+		"fzzy_config": [
+			"healthregenerationoverhaul"
+		]
+	},
 	"depends": {
-		"fabricloader": ">=0.14.20",
-		"minecraft": "1.20.1",
-		"java": ">=17",
-		"fabric-api": "*"
+		"fabricloader": ">=${loader_version}",
+		"minecraft": "${minecraft_version}",
+		"fabric-api": "*",
+		"fzzy_config": ">=${fzzy_config_version}",
+		"resourcebarapi": ">=${resource_bar_api_version}"
 	},
 	"suggests": {
 		"foodoverhaul": "*"

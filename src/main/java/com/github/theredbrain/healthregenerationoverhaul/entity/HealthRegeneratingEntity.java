@@ -5,5 +5,7 @@ public interface HealthRegeneratingEntity {
     float healthregenerationoverhaul$getRegeneratedHealth();
     float healthregenerationoverhaul$getHealthRegeneration();
     int healthregenerationoverhaul$getHealthRegenerationDelayThreshold();
+    float healthregenerationoverhaul$getUnreservedHealth();
+    float healthregenerationoverhaul$getReservedHealth();
     void healthregenerationoverhaul$resetTickCounters();
 }

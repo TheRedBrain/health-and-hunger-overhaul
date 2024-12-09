@@ -2,18 +2,91 @@
 	"attribute.name.generic.health_regeneration": "Health Regen",
 	"attribute.name.generic.health_tick_threshold": "Health Tick Threshold",
 	"attribute.name.generic.health_regeneration_delay_threshold": "Health Regeneration Delay Threshold",
+	"attribute.name.generic.reserved_health": "Reserved Health",
 
-	"text.autoconfig.healthregenerationoverhaul.title": "Health Regeneration Overhaul",
-	"text.autoconfig.healthregenerationoverhaul.option.client.enable_alternative_health_bar": "Enable the alternative health bar",
-	"text.autoconfig.healthregenerationoverhaul.option.client.show_full_health_bar": "Shows the health bar even if it's full",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_additional_length": "Additional length of the health bar",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_x_offset": "Health bar x offset",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_y_offset": "Health bar y offset",
-	"text.autoconfig.healthregenerationoverhaul.option.client.enable_smooth_animation": "Enable a smooth animation on value changes",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_animation_interval": "Animation update interval in ticks",
-	"text.autoconfig.healthregenerationoverhaul.option.client.show_current_value_overlay": "Displays the current value on the bar",
-	"text.autoconfig.healthregenerationoverhaul.option.client.show_health_bar_number": "Show numeric health value",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_number_color": "Color of the health bar number",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_number_x_offset": "Health bar number x offset",
-	"text.autoconfig.healthregenerationoverhaul.option.client.health_bar_number_y_offset": "Health bar number y offset"
+	"healthregenerationoverhaul.client": "Client Side Settings",
+
+	"healthregenerationoverhaul.client.enable_alternative_health_bar": "Enable the alternative health bar",
+	"healthregenerationoverhaul.client.enable_alternative_health_bar.desc": "Replaces the vanilla health bar with a simpler and more scalable bar.\nAll other options in this config only affect the new health bar",
+
+	"healthregenerationoverhaul.client.show_full_health_bar": "Show full bar",
+	"healthregenerationoverhaul.client.show_full_health_bar.desc": "Shows the health bar even if it's full",
+
+	"healthregenerationoverhaul.client.positionSettings": "Position Settings",
+
+	"healthregenerationoverhaul.client.positionSettings.origin": "Origin",
+
+	"healthregenerationoverhaul.client.positionSettings.dynamically_adjust_to_armor_bar": "Adjusts to armor bar",
+	"healthregenerationoverhaul.client.positionSettings.dynamically_adjust_to_armor_bar.desc": "When armor HUD is visible, the stamina bar is moved up",
+
+	"healthregenerationoverhaul.client.positionSettings.is_centered": "Is centered",
+
+	"healthregenerationoverhaul.client.positionSettings.offsets_x": "X Offset from Origin",
+	"healthregenerationoverhaul.client.positionSettings.offsets_x.desc": "Only the highest reached threshold is used.",
+	"healthregenerationoverhaul.client.positionSettings.offsets_y": "Y Offset from Origin",
+	"healthregenerationoverhaul.client.positionSettings.offsets_y.desc": "Only the highest reached threshold is used.",
+
+	"healthregenerationoverhaul.client.fill_direction": "Fill direction",
+
+	"healthregenerationoverhaul.client.textureSettings.backgroundTextureSettings": "Background",
+	"healthregenerationoverhaul.client.textureSettings.progressTextureSettings": "Progress",
+	"healthregenerationoverhaul.client.textureSettings.reservedTextureSettings": "Reserved",
+
+	"healthregenerationoverhaul.client.texture_layer.offset_x": "X offset from background",
+	"healthregenerationoverhaul.client.texture_layer.offset_y": "Y offset from background",
+	"healthregenerationoverhaul.client.texture_layer.middle_segment_amounts": "Middle segment amounts",
+	"healthregenerationoverhaul.client.texture_layer.middle_segment_amounts.desc": "Only the highest reached threshold is used.",
+
+	"healthregenerationoverhaul.client.texture_layer.horizontalTextureSettings": "Horizontal Textures",
+	"healthregenerationoverhaul.client.texture_layer.horizontal_left_end_width": "Left End Width",
+	"healthregenerationoverhaul.client.texture_layer.horizontal_middle_segment_width": "Middle Segment Width",
+	"healthregenerationoverhaul.client.texture_layer.horizontal_right_end_width": "Right End Width",
+	"healthregenerationoverhaul.client.texture_layer.horizontal_height": "Height",
+
+	"healthregenerationoverhaul.client.texture_layer.verticalTextureSettings": "Vertical Textures",
+	"healthregenerationoverhaul.client.texture_layer.vertical_width": "Width",
+	"healthregenerationoverhaul.client.texture_layer.vertical_top_end_height": "Top End Height",
+	"healthregenerationoverhaul.client.texture_layer.vertical_middle_segment_height": "Middle Segment Height",
+	"healthregenerationoverhaul.client.texture_layer.vertical_bottom_end_height": "Bottom End Height",
+
+	"healthregenerationoverhaul.client.show_current_value_overlay": "Show overlay",
+	"healthregenerationoverhaul.client.show_current_value_overlay.desc": "Indicates the current value",
+
+	"healthregenerationoverhaul.client.textureSettings.overlayTextureSettings": "Overlay",
+
+	"healthregenerationoverhaul.client.textureSettings.overlayTextureSettings.offset_x": "X offset from progress",
+	"healthregenerationoverhaul.client.textureSettings.overlayTextureSettings.offset_y": "Y offset from progress",
+
+	"healthregenerationoverhaul.client.textureSettings.overlayTextureSettings.horizontal_width": "Horizontal Width",
+	"healthregenerationoverhaul.client.textureSettings.overlayTextureSettings.horizontal_height": "Horizontal Height",
+
+	"healthregenerationoverhaul.client.textureSettings.overlayTextureSettings.vertical_width": "Vertical Width",
+	"healthregenerationoverhaul.client.textureSettings.overlayTextureSettings.vertical_height": "Vertical Height",
+
+	"healthregenerationoverhaul.client.enable_smooth_animation": "Enable smooth animation",
+
+	"healthregenerationoverhaul.client.animationSettings": "Animation Settings",
+
+	"healthregenerationoverhaul.client.animationSettings.animation_interval": "Animation interval",
+	"healthregenerationoverhaul.client.animationSettings.max_value_change_is_animated": "Animate max value changes",
+
+	"healthregenerationoverhaul.client.show_number": "Show number",
+	"healthregenerationoverhaul.client.show_number.desc": "Shows the current health amount as a number",
+
+	"healthregenerationoverhaul.client.numberSettings": "Number Settings",
+
+	"healthregenerationoverhaul.client.numberSettings.show_max_value.desc": "Additionally shows the maximum value. When stamina is reserved, it shows the unreserved maximum and the real maximum (in brackets).",
+	"healthregenerationoverhaul.client.numberSettings.show_max_value": "Show maximum value",
+
+	"healthregenerationoverhaul.client.numberSettings.show_when_health_full": "Show when health is full",
+
+	"healthregenerationoverhaul.client.numberSettings.number_offset_x": "X offset from origin",
+	"healthregenerationoverhaul.client.numberSettings.number_offset_y": "Y offset from origin",
+
+	"healthregenerationoverhaul.client.numberSettings.number_color": "Number color",
+
+	"healthregenerationoverhaul.server": "Server Side Settings",
+
+	"healthregenerationoverhaul.server.disable_vanilla_food_system": "Disable vanilla food system",
+	"healthregenerationoverhaul.server.disable_vanilla_food_system.desc": "Note that a sufficiently full hunger bar and your health regeneration attribute will both regenerate your health, when this is set to false."
 }

@@ -28,7 +28,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements HealthRe
 
     @Override
     public float healthregenerationoverhaul$getRegeneratedHealth() {
-        return Math.max(this.healthregenerationoverhaul$getHealthRegeneration(), (this.getServer() != null && this.getServer().getGameRules().getBoolean(GameRules.NATURAL_REGENERATION) ? 1.0F : 0.0F));
+        return this.healthregenerationoverhaul$getHealthRegeneration() + (this.getServer() != null && this.getServer().getGameRules().getBoolean(GameRules.NATURAL_REGENERATION) ? 1.0F : 0.0F);
     }
 
 }

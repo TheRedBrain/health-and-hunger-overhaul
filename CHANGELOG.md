@@ -1,3 +1,15 @@
+# 1.3.0
+
+- added "generic.reserved_health" entity attribute
+- "generic.health_regeneration" entity attribute can now be negative
+- changed vanillas "natural regeneration" gamerule to simply add 1 health regeneration.
+- HUD element overhaul, improves mod compatibility, increases customization options
+- server config can now be edited in game (Thanks to Fzzy Config)
+- generally improved config layout
+- removed dependency on Cloth Config
+- added dependency on Fzzy Config
+- added dependency on Resource Bar API
+
 # 1.2.1
 
 - fixed an issue where entities would rarely be immortal
