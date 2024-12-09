@@ -1,4 +1,3 @@
-
 package com.github.theredbrain.healthregenerationoverhaul.registry;
 
 import com.github.theredbrain.healthregenerationoverhaul.HealthRegenerationOverhaul;
