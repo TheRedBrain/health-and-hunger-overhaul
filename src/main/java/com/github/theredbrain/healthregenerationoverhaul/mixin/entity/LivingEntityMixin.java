@@ -52,6 +52,7 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
                 .add(HealthRegenerationOverhaul.HEALTH_REGENERATION)
                 .add(HealthRegenerationOverhaul.HEALTH_TICK_THRESHOLD)
                 .add(HealthRegenerationOverhaul.HEALTH_REGENERATION_DELAY_THRESHOLD)
+                .add(HealthRegenerationOverhaul.RESERVED_HEALTH)
         ;
     }
 
@@ -83,10 +84,10 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
                     this.healthTickTimer >= this.healthregenerationoverhaul$getHealthTickThreshold()
                     && this.healthRegenerationDelayTimer > this.healthregenerationoverhaul$getHealthRegenerationDelayThreshold()
             ) {
-                if (this.getHealth() < this.getMaxHealth()) {
+                if (this.getHealth() < this.healthregenerationoverhaul$getUnreservedHealth()) {
                     this.heal(this.healthregenerationoverhaul$getRegeneratedHealth());
-                } else if (this.getHealth() > this.getMaxHealth()) {
-                    this.setHealth(this.getMaxHealth());
+                } else if (this.getHealth() > this.healthregenerationoverhaul$getUnreservedHealth()) {
+                    this.setHealth(this.healthregenerationoverhaul$getUnreservedHealth());
                 }
                 this.healthTickTimer = 0;
             }
@@ -111,6 +112,16 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
     @Override
     public float healthregenerationoverhaul$getHealthRegeneration() {
         return (float) this.getAttributeValue(HealthRegenerationOverhaul.HEALTH_REGENERATION);
+    }
+
+    @Override
+    public float healthregenerationoverhaul$getUnreservedHealth() {
+        return this.getMaxHealth() - ((this.getMaxHealth() * this.healthregenerationoverhaul$getReservedHealth()) / 100);
+    }
+
+    @Override
+    public float healthregenerationoverhaul$getReservedHealth() {
+        return (float) this.getAttributeValue(HealthRegenerationOverhaul.RESERVED_HEALTH);
     }
 
     @Override

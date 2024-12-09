@@ -17,7 +17,7 @@ public class HungerManagerMixin {
      */
     @Inject(method = "update", at = @At("HEAD"), cancellable = true)
     public void update(PlayerEntity player, CallbackInfo ci) {
-        if (HealthRegenerationOverhaul.serverConfig.disable_vanilla_food_system) {
+        if (HealthRegenerationOverhaul.SERVER_CONFIG.disable_vanilla_food_system) {
             ci.cancel();
         }
     }
@@ -27,7 +27,7 @@ public class HungerManagerMixin {
      */
     @Inject(method = "addExhaustion", at = @At("HEAD"), cancellable = true)
     public void addExhaustion(float exhaustion, CallbackInfo ci) {
-        if (HealthRegenerationOverhaul.serverConfig.disable_vanilla_food_system) {
+        if (HealthRegenerationOverhaul.SERVER_CONFIG.disable_vanilla_food_system) {
             ci.cancel();
         }
     }
