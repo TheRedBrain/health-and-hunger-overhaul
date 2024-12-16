@@ -65,9 +65,7 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
 
 	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setHealth(F)V", shift = At.Shift.AFTER))
 	protected void healthregenerationoverhaul$applyDamage(DamageSource source, float amount, CallbackInfo ci) {
-		if (amount < 0) {
-			this.healthregenerationoverhaul$resetTickCounters();
-		}
+		this.healthregenerationoverhaul$resetTickCounters();
 	}
 
 	@Inject(method = "tick", at = @At("TAIL"))
@@ -78,11 +76,11 @@ public abstract class LivingEntityMixin extends Entity implements HealthRegenera
 
 			if (this.healthRegenerationDelayTimer <= this.healthregenerationoverhaul$getHealthRegenerationDelayThreshold()) {
 				this.healthRegenerationDelayTimer++;
+				this.healthTickTimer = 0;
 			}
 
-			if (
-					this.healthTickTimer >= this.healthregenerationoverhaul$getHealthTickThreshold()
-							&& this.healthRegenerationDelayTimer > this.healthregenerationoverhaul$getHealthRegenerationDelayThreshold()
+			if (this.healthTickTimer >= this.healthregenerationoverhaul$getHealthTickThreshold()
+					&& this.healthRegenerationDelayTimer > this.healthregenerationoverhaul$getHealthRegenerationDelayThreshold()
 			) {
 				if (this.getHealth() < this.healthregenerationoverhaul$getUnreservedHealth()) {
 					this.heal(this.healthregenerationoverhaul$getRegeneratedHealth());

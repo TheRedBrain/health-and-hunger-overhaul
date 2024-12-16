@@ -1,3 +1,7 @@
+# 2.4.1
+
+- fixed an issue where the regeneration delay after taking damage was not applied correctly
+
 # 2.4.0
 
 HUD rendering overhaul

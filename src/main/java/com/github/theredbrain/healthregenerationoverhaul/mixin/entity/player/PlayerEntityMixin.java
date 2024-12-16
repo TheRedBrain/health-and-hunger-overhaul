@@ -21,9 +21,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements HealthRe
 
 	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;setHealth(F)V", shift = At.Shift.AFTER))
 	protected void healthregenerationoverhaul$applyDamage(DamageSource source, float amount, CallbackInfo ci) {
-		if (amount < 0) {
-			this.healthregenerationoverhaul$resetTickCounters();
-		}
+		this.healthregenerationoverhaul$resetTickCounters();
 	}
 
 	@Override
